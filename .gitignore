@@ -2,3 +2,4 @@
 .solution.json
 __pycache__/
 .vscode/
+.exercism
