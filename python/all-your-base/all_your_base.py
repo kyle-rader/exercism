@@ -10,14 +10,15 @@ def rebase(input_base: int, digits: List[int], output_base: int) -> List[int]:
         return []
 
     # Build up the value in base 10 first to convert into new base
-    base_10_val = 0
-    for i in range(len(digits)):
-        base_10_val += digits[i] * (input_base ** (len(digits) - i - 1))
+    n = len(digits)
+    base_10_val = sum(d * (input_base ** (n - i - 1)) for i, d in enumerate(digits))
+
 
     new_digits = []
     while base_10_val > 0:
         digit = base_10_val % output_base
-        base_10_val = int(base_10_val/output_base)
-        new_digits.insert(0, digit)
+        base_10_val //= output_base
+        new_digits.append(digit)
 
+    new_digits.reverse()
     return new_digits
