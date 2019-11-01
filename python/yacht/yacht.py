@@ -39,7 +39,31 @@ def score_full_house(dice):
     return sum(sum(g) for g in groups)
 
 
+def score_four_of_a_kind(dice):
+    for i in range(1,7):
+        if len([d for d in dice if d == i]) >= 4:
+            return 4*i
+    return 0
 
+def is_straight(dice):
+    last = dice[0]
+    for j in dice[1:]:
+        if j != (last+1):
+            return False
+        last = j
+    return True
+
+
+def score_little_straight(dice):
+    if is_straight(dice[0:5]) or is_straight(dice[1:6]):
+        return 30
+    return 0
+
+
+def score_big_straight(dice):
+    if is_straight(dice[0:6]):
+        return 30
+    return 0
 
 
 CATEGORY_FUNCS = {
@@ -51,7 +75,14 @@ CATEGORY_FUNCS = {
     FIVES: lambda d: score_number(d, 5),
     SIXES: lambda d: score_number(d, 6),
     FULL_HOUSE: score_full_house,
+    FOUR_OF_A_KIND: score_four_of_a_kind,
+    CHOICE: lambda d: sum(d),
+    LITTLE_STRAIGHT: score_little_straight,
+    BIG_STRAIGHT: score_big_straight,
 }
 
+
 def score(dice, category):
-    return CATEGORY_FUNCS.get(category, lambda: -1)(dice)
+    if category not in CATEGORY_FUNCS.keys():
+        return -1
+    return CATEGORY_FUNCS.get(category)(dice)
