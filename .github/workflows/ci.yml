@@ -6,6 +6,13 @@ on:
     branches: [ master ]
 
 jobs:
+  ecl:
+    name: "Editor Config Linting"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: greut/eclint-action@v0
+
   python:
     strategy:
       matrix:
