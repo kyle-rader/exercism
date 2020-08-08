@@ -45,25 +45,17 @@ def score_four_of_a_kind(dice):
             return 4*i
     return 0
 
-def is_straight(dice):
-    last = dice[0]
-    for j in dice[1:]:
-        if j != (last+1):
-            return False
-        last = j
-    return True
+
+def has_range(d, r):
+    return all([(i in d) for i in r])
 
 
 def score_little_straight(dice):
-    if is_straight(dice[0:5]) or is_straight(dice[1:6]):
-        return 30
-    return 0
+    return 30 if has_range(dice, range(1,6)) else 0
 
 
 def score_big_straight(dice):
-    if is_straight(dice[0:6]):
-        return 30
-    return 0
+    return 30 if has_range(dice, range(2,7)) else 0
 
 
 CATEGORY_FUNCS = {
