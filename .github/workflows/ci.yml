@@ -42,8 +42,8 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pytest python/ --doctest-modules --junitxml=junit/test-results.xml
+          pytest python/ --doctest-modules --junitxml=junit/test-results-python${{python-version}}.xml
       - uses: actions/upload-artifact@v2
         with:
           name: pytest-results
-          path: junit/test-results.xml
+          path: junit/test-results-python${{python-version}}.xml
