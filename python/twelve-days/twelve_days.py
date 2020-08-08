@@ -31,7 +31,7 @@ verse = [
 base_verse = "On the {} day of Christmas my true love gave to me: {}"
 
 def recite(start_verse, end_verse):
-    return [gen_verse(i) for i in range(start_verse, end_verse+1)]
+    yield from (gen_verse(i) for i in range(start_verse, end_verse+1))
 
 def gen_verse(index):
     return base_verse.format(num_to_word[index-1], " ".join(verse[12-index:]))

@@ -11,7 +11,7 @@ class TwelveDaysTest(unittest.TestCase):
             "On the first day of Christmas my true love gave to me: "
             "a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(1, 1), expected)
+        self.assertEqual(list(recite(1, 1)), expected)
 
     def test_second_day_two_turtle_doves(self):
         expected = [
@@ -19,7 +19,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(2, 2), expected)
+        self.assertEqual(list(recite(2, 2)), expected)
 
     def test_third_day_three_french_hens(self):
         expected = [
@@ -28,7 +28,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(3, 3), expected)
+        self.assertEqual(list(recite(3, 3)), expected)
 
     def test_fourth_day_four_calling_birds(self):
         expected = [
@@ -38,7 +38,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(4, 4), expected)
+        self.assertEqual(list(recite(4, 4)), expected)
 
     def test_fifth_day_five_gold_rings(self):
         expected = [
@@ -49,7 +49,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(5, 5), expected)
+        self.assertEqual(list(recite(5, 5)), expected)
 
     def test_sixth_day_six_geese_a_laying(self):
         expected = [
@@ -61,7 +61,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(6, 6), expected)
+        self.assertEqual(list(recite(6, 6)), expected)
 
     def test_seventh_day_seven_swans_a_swimming(self):
         expected = [
@@ -74,7 +74,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(7, 7), expected)
+        self.assertEqual(list(recite(7, 7)), expected)
 
     def test_eighth_day_eight_maids_a_milking(self):
         expected = [
@@ -88,7 +88,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(8, 8), expected)
+        self.assertEqual(list(recite(8, 8)), expected)
 
     def test_ninth_day_nine_ladies_dancing(self):
         expected = [
@@ -103,7 +103,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(9, 9), expected)
+        self.assertEqual(list(recite(9, 9)), expected)
 
     def test_tenth_day_ten_lords_a_leaping(self):
         expected = [
@@ -119,7 +119,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(10, 10), expected)
+        self.assertEqual(list(recite(10, 10)), expected)
 
     def test_eleventh_day_eleven_pipers_piping(self):
         expected = [
@@ -136,7 +136,7 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(11, 11), expected)
+        self.assertEqual(list(recite(11, 11)), expected)
 
     def test_twelfth_day_twelve_drummers_drumming(self):
         expected = [
@@ -154,19 +154,19 @@ class TwelveDaysTest(unittest.TestCase):
             "two Turtle Doves, "
             "and a Partridge in a Pear Tree."
         ]
-        self.assertEqual(recite(12, 12), expected)
+        self.assertEqual(list(recite(12, 12)), expected)
 
     def test_recites_first_three_verses_of_the_song(self):
-        expected = [recite(n, n)[0] for n in range(1, 4)]
-        self.assertEqual(recite(1, 3), expected)
+        expected = [list(recite(n, n))[0] for n in range(1, 4)]
+        self.assertEqual(list(recite(1, 3)), expected)
 
     def test_recites_three_verses_from_the_middle_of_the_song(self):
-        expected = [recite(n, n)[0] for n in range(4, 7)]
-        self.assertEqual(recite(4, 6), expected)
+        expected = [list(recite(n, n))[0] for n in range(4, 7)]
+        self.assertEqual(list(recite(4, 6)), expected)
 
     def test_recites_the_whole_song(self):
-        expected = [recite(n, n)[0] for n in range(1, 13)]
-        self.assertEqual(recite(1, 12), expected)
+        expected = [list(recite(n, n))[0] for n in range(1, 13)]
+        self.assertEqual(list(recite(1, 12)), expected)
 
 
 if __name__ == "__main__":
