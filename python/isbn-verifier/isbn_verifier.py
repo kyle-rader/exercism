@@ -7,7 +7,7 @@ def verify(isbn: str):
     s = 0
     i = 0
     for c in isbn:
-        if c is "-":
+        if c == "-":
             continue
         i += 1
         if c.isdigit():
