@@ -4,6 +4,6 @@ end_of_line = lf
 [*.{csproj,sln}]
 end_of_line = crlf
 
-[*.md]
+[/*.md]
 tab_width = 3
 indent_style = tab
