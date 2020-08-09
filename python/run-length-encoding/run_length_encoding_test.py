@@ -6,6 +6,9 @@ from run_length_encoding import encode, decode
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
 
 class RunLengthEncodingTest(unittest.TestCase):
+    def test_encode_none(self):
+        self.assertEqual(encode(None), '')
+
     def test_encode_empty_string(self):
         self.assertMultiLineEqual(encode(''), '')
 
@@ -25,6 +28,9 @@ class RunLengthEncodingTest(unittest.TestCase):
 
     def test_encode_lowercase_characters(self):
         self.assertMultiLineEqual(encode('aabbbcccc'), '2a3b4c')
+
+    def test_decode_none(self):
+        self.assertEqual(decode(None), '')
 
     def test_decode_empty_string(self):
         self.assertMultiLineEqual(decode(''), '')
