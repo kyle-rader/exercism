@@ -10,21 +10,16 @@ jobs:
     name: "Editor Config Linting"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: greut/eclint-action@v0
 
   python:
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        python-version: [3.6, 3.7, 3.8]
-    runs-on: ${{ matrix.os }}
+        python-version: [3.9, 3.10]
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: marceloprado/has-changed-path@master
-        id: changed-python
-        with:
-          paths: python/
+      - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -47,3 +42,16 @@ jobs:
         with:
           name: pytest-results-python${{ matrix.python-version }}
           path: junit/test-results-python${{ matrix.python-version }}.xml
+
+  elixir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          version-file: .tool-versions
+      - name: Install dependencies
+        run: mix deps.get
+      - name: Test with ExUnit
+        run: mix test
