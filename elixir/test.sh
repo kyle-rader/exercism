@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 here=$(dirname $0)
 pids=()
 
@@ -12,6 +10,11 @@ for proj in ${here}/*; do
     
     echo "Testing $proj"
     pushd "$proj"
-    mix test
+    mix test > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "❌ $proj"
+    else
+        echo "✅ $proj"
+    fi
     popd
 done
